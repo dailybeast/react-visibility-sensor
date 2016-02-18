@@ -58,13 +58,17 @@ module.exports = React.createClass({
   },
 
   startWatching: function () {
-    if (this.interval) { return; }
-    this.interval = setInterval(this.check, this.props.delay);
-    this.check();
+    // if (this.interval) { return; }
+    // this.interval = setInterval(this.check, this.props.delay);
+
+    window.addEventListener('scroll', () => {
+      this.check();
+    });
   },
 
   stopWatching: function () {
-    this.interval = clearInterval(this.interval);
+    window.removeEventListener('scroll');
+    // this.interval = clearInterval(this.interval);
   },
 
   /**
