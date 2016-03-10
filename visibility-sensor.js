@@ -72,7 +72,6 @@ module.exports = React.createClass({
    * Check if the element is within the visible viewport
    */
   check: function () {
-    console.log('local visibility sensor');
     var el = ReactDOM.findDOMNode(this);
     var rect = el.getBoundingClientRect();
     var containmentRect;
