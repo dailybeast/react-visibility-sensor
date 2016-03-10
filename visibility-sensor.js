@@ -18,7 +18,8 @@ module.exports = React.createClass({
     partialVisibility: React.PropTypes.bool,
     delay: React.PropTypes.number,
     containment: containmentPropType,
-    children: React.PropTypes.element
+    children: React.PropTypes.element,
+    offsetTop: React.PropTypes.number,
   },
 
   getDefaultProps: function () {
@@ -74,12 +75,13 @@ module.exports = React.createClass({
     var el = ReactDOM.findDOMNode(this);
     var rect = el.getBoundingClientRect();
     var containmentRect;
+    var offsetTop = this.props.offsetTop || 0;
 
     if (this.props.containment) {
       containmentRect = this.props.containment.getBoundingClientRect();
     } else {
       containmentRect = {
-        top: 0,
+        top: offsetTop,
         left: 0,
         bottom: window.innerHeight || document.documentElement.clientHeight,
         right: window.innerWidth || document.documentElement.clientWidth
